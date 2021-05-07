@@ -13,8 +13,8 @@ class LaravelRedisServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Routes
-        include __DIR__ . '/routes/route.php';
+        // Route
+        $this->loadRoutesFrom(__DIR__ . '/routes/route.php');
     }
 
     /**
@@ -24,6 +24,6 @@ class LaravelRedisServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
-    }
+        $this->app->make('Drobinetm\Redis\Http\Controllers\LaravelRedisController');
+     }
 }
