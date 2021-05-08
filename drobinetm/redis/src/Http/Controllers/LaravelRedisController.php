@@ -5,6 +5,7 @@ namespace Drobinetm\Redis\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Drobinetm\Redis\Http\Services\LaravelRedisService;
+use Illuminate\Http\JsonResponse;
 
 class LaravelRedisController extends Controller
 {
@@ -15,7 +16,7 @@ class LaravelRedisController extends Controller
      *
      * @params LaravelRedisService $laravelRedisService
      *
-     * **/
+     **/
     public function __construct(LaravelRedisService $laravelRedisService)
     {
         $this->laravelRedisService = $laravelRedisService;
@@ -23,10 +24,28 @@ class LaravelRedisController extends Controller
 
     /**
      * Get info from server redis
-     * **/
+     **/
     public function info()
     {
         $info = $this->laravelRedisService->infoServer();
-        return response()->json($info);
+        return response()->json($info, JsonResponse::HTTP_OK);
+    }
+
+    /**
+     * Get keys from server redis
+     **/
+    public function keys()
+    {
+        $keys = $this->laravelRedisService->keys();
+        return response()->json($keys, JsonResponse::HTTP_OK);
+    }
+
+    /**
+     * Get slow queries log
+     **/
+    public function slowLog()
+    {
+        $logs = $this->laravelRedisService->slowLogs();
+        return response()->json($logs, JsonResponse::HTTP_OK);
     }
 }
