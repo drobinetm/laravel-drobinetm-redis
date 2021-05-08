@@ -27,6 +27,10 @@ class LaravelRedisServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // Middleware
+        $this->app->make('Drobinetm\Redis\Http\Middleware\LaravelRedisVerifySignature');
+
+        // Controller
         $this->app->make('Drobinetm\Redis\Http\Controllers\LaravelRedisController');
      }
 }
