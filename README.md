@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <img src="https://github.com/drobinetm/laravel-drobinetm-redis/blob/main/drobientm/redis/src/public/assets/2021-05-09_15-28.png?raw=true" alt="laravel-redis.png">
+  <img src="https://github.com/drobinetm/laravel-drobinetm-redis/blob/main/drobinetm/redis/src/public/assets/2021-05-09_15-28.png?raw=true" alt="laravel-redis.png">
   <br>
 </h1>
 
