@@ -2,7 +2,11 @@
 
 namespace Drobinetm\Redis\Console\Commands;
 
+use Drobinetm\Redis\Http\Services\LaravelRedisSecurityService;
+use Drobinetm\Redis\Http\Services\LaravelRedisService;
+use Drobinetm\Redis\Models\LaravelRedisSecurity;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 
 class LaravelRedisInstall extends Command
 {
@@ -18,7 +22,14 @@ class LaravelRedisInstall extends Command
      *
      * @var string
      */
-    protected $description = 'Install migrations and properties of the security with this library';
+    protected $description = 'Install migrations and properties for this library.';
+
+    /**
+     * The Laravel Redis Security Service object.
+     *
+     * @var LaravelRedisSecurityService
+     */
+    protected $laravelRedisSecurityService;
 
     /**
      * Create a new command instance.
@@ -28,6 +39,8 @@ class LaravelRedisInstall extends Command
     public function __construct()
     {
         parent::__construct();
+
+        $this->laravelRedisSecurityService = new LaravelRedisSecurityService();
     }
 
     /**
@@ -37,6 +50,14 @@ class LaravelRedisInstall extends Command
      */
     public function handle()
     {
-        //
+        // Run migration
+        Artisan::call('migrate', ['--path' => __DIR__ . '../../database/migrations/2021_05_08_133134_create_laravel_redis_securities_table.php']);
+
+        // Generate security properties and save on database
+        $properties = $this->laravelRedisSecurityService->release();
+
+        $this->info("ClientId: {$properties['clientId']}");
+        $this->info("ClientSecret: {$properties['clientSecret']}");
+        $this->info("Signature: {$properties['signature']}");
     }
 }

@@ -28,16 +28,17 @@ class LaravelRedisVerifySignature
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
         $sigHeader = $request->header('Laravel-Redis-Signature');
         if (!isset($sigHeader))
         {
-            throw new Exception('El encabezado Laravel-Redis-Signature es requerido');
+            throw new Exception('Laravel-Redis-Signature header is required!!!');
         }
 
         $isValid = $this->laravelRedisSecurityService->isSignatureValid($sigHeader);
-        if ($isValid) {
+        if ($isValid)
+        {
             return $next($request);
         }
     }

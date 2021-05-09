@@ -2,7 +2,10 @@
 
 namespace Drobinetm\Redis;
 
+use Drobinetm\Redis\Console\Commands\LaravelRedisInstall;
+use Drobinetm\Redis\Http\Middleware\LaravelRedisVerifySignature;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Routing\Router;
 
 class LaravelRedisServiceProvider extends ServiceProvider
 {
@@ -17,7 +20,16 @@ class LaravelRedisServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__ . '/routes/route.php');
 
         // Migrations
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations/2021_05_08_133134_create_laravel_redis_securities_table.php');
+        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+
+        // Commands
+        if ($this->app->runningInConsole()) {
+            $this->commands([LaravelRedisInstall::class,]);
+        }
+
+        // Middleware
+        $router = $this->app->make(Router::class);
+        $router->aliasMiddleware('laravel-redis-middleware', LaravelRedisVerifySignature::class);
     }
 
     /**
@@ -27,9 +39,6 @@ class LaravelRedisServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Middleware
-        $this->app->make('Drobinetm\Redis\Http\Middleware\LaravelRedisVerifySignature');
-
         // Controller
         $this->app->make('Drobinetm\Redis\Http\Controllers\LaravelRedisController');
      }

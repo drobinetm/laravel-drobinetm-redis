@@ -13,13 +13,15 @@ class CreateLaravelRedisSecuritiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('laravel_redis_securities', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('clientId', 255);
-            $table->string('clientSecret', 255);
-            $table->text('token');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('laravel_redis_securities')) {
+            Schema::create('laravel_redis_securities', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('clientId', 255);
+                $table->string('clientSecret', 255);
+                $table->text('token');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
@@ -29,6 +31,8 @@ class CreateLaravelRedisSecuritiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('laravel_redis_securities');
+        if (Schema::hasTable('laravel_redis_securities')) {
+            Schema::dropIfExists('laravel_redis_securities');
+        }
     }
 }
