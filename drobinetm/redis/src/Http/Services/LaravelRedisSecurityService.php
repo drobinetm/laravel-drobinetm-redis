@@ -21,7 +21,7 @@ class LaravelRedisSecurityService
         $this->laravelRedisSecurity = LaravelRedisSecurity::first();;
     }
 
-    public function security()
+    private function security()
     {
         $clientId = $this->clientId();
         $clientSecret = $this->clientSecret();
@@ -43,16 +43,15 @@ class LaravelRedisSecurityService
             throw new Exception("The clientId and the clientSecret do not exist in the database. Please run the command: laravel-redis:install");
         }
 
-        // Data public
-        $token = Crypt::decryptString($signature);
-
         // From database
-        $tokenSecret = $this->laravelRedisSecurity->token;
         $clientId = $this->laravelRedisSecurity->clientId;
         $clientSecret = $this->laravelRedisSecurity->clientSecret;
         $signatureSecret = hash_hmac('sha256', json_encode(['clientId' => $clientId, 'clientSecret' => $clientSecret]), $clientSecret);
 
-        return ($signature === $signatureSecret && $token === $tokenSecret);
+        $tokenSecret = $this->laravelRedisSecurity->token;
+        $tokenSignature = Crypt::decryptString($tokenSecret);
+
+        return ($signature === $signatureSecret && $signature === $tokenSignature);
     }
 
     public function release()

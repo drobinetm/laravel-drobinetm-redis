@@ -33,13 +33,15 @@ class LaravelRedisVerifySignature
         $sigHeader = $request->header('Laravel-Redis-Signature');
         if (!isset($sigHeader))
         {
-            throw new Exception('Laravel-Redis-Signature header is required!!!');
+            throw new Exception('The Laravel-Redis-Signature header is required!!!');
         }
 
         $isValid = $this->laravelRedisSecurityService->isSignatureValid($sigHeader);
-        if ($isValid)
+        if (!$isValid)
         {
-            return $next($request);
+            throw new Exception('The Laravel-Redis-Signature header is invalid!!!');
         }
+
+        return $next($request);
     }
 }
