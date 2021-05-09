@@ -1,10 +1,10 @@
 <h1 align="center">
   <br>
-  <img src="/src/public/assets/2021-05-09_15-28.png" alt="laravel-redis.png">
+  <img src="src/public/assets/2021-05-09_15-28.png" alt="laravel-redis.png">
   <br>
 </h1>
 
-# Laravel Redis Info
+# Laravel Redis Information
 
 <table>
   <tr>
@@ -28,8 +28,8 @@
 
 ## Endpoints
 
-1. [GET] /info
+1. [GET] /redis/info
 
-2. [GET] /keys
+2. [GET] /redis/keys
 
-3. [GET] /slow-log
+3. [GET] /redis/slow-log
