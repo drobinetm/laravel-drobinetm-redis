@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <img src="src/public/assets/2021-05-09_15-28.png" alt="laravel-redis.png">
+  ![Laravel Redis](/drobinetm/redis/src/public/assets/2021-05-09_15-28.png?raw=true "Optional Title"/)
   <br>
 </h1>
 
@@ -16,20 +16,24 @@
 
 ## How to Use
 
-1. composer requiere
+```php
+composer require drobinetm/laravel-drobinetm-redis
 
-2. Run: php artisan laravel-redis:install
+php artisan laravel-redis:install
+```
 
-3. Save the printed signature property to the console.
+## Then
 
-4. Send in the header of the links the value of the signature property: 
+1. Save the printed signature property in the console.
+
+2. Send in the header of the links the value of the signature property: 
 [Laravel-Redis-Signature] => signature value
 
 
 ## Endpoints
 
-1. [GET] /redis/info
+1. **[GET]** `/redis/info`
 
-2. [GET] /redis/keys
+2. **[GET]** `/redis/keys`
 
-3. [GET] /redis/slow-log
+3. **[GET]** `/redis/slow-log`
