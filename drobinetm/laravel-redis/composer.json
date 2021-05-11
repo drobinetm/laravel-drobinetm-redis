@@ -1,5 +1,5 @@
 {
-    "name": "drobinetm/laravel-drobinetm-redis",
+    "name": "drobinetm/laravel-redis",
     "description": "Package to obtain the info of a redis server used by our application through a json response.",
     "type": "library",
     "license": "MIT",
@@ -10,5 +10,7 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "ext-json": "*"
+    }
 }

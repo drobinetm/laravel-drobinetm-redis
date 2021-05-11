@@ -1,10 +1,8 @@
 <?php
 
-namespace Drobinetm\Redis\Console\Commands;
+namespace Drobinetm\LaravelRedis\Console\Commands;
 
-use Drobinetm\Redis\Http\Services\LaravelRedisSecurityService;
-use Drobinetm\Redis\Http\Services\LaravelRedisService;
-use Drobinetm\Redis\Models\LaravelRedisSecurity;
+use Drobinetm\LaravelRedis\Http\Services\LaravelRedisSecurityService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 
@@ -46,7 +44,7 @@ class LaravelRedisInstall extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return void
      */
     public function handle()
     {

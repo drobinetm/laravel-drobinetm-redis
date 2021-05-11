@@ -1,6 +1,6 @@
 <?php
 
-namespace Drobinetm\Redis\Models;
+namespace Drobinetm\LaravelRedis\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

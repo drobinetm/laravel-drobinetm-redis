@@ -1,10 +1,11 @@
 <?php
 
-namespace Drobinetm\Redis\Http\Middleware;
+namespace Drobinetm\LaravelRedis\Http\Middleware;
 
-use Drobinetm\Redis\Http\Services\LaravelRedisSecurityService;
+use Drobinetm\LaravelRedis\Http\Services\LaravelRedisSecurityService;
 use Closure;
 use Exception;
+use Illuminate\Http\Request;
 
 class LaravelRedisVerifySignature
 {
@@ -24,9 +25,10 @@ class LaravelRedisVerifySignature
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param Request $request
+     * @param Closure $next
      * @return mixed
+     * @throws Exception
      */
     public function handle($request, Closure $next)
     {

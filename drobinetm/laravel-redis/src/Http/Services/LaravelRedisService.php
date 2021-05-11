@@ -1,6 +1,6 @@
 <?php
 
-namespace Drobinetm\Redis\Http\Services;
+namespace Drobinetm\LaravelRedis\Http\Services;
 
 use Illuminate\Support\Facades\Redis;
 
@@ -10,7 +10,9 @@ class LaravelRedisService
 
     /**
      * Access to info of the server redis
-     **/
+     *
+     * @return mixed
+     */
     public function infoServer()
     {
         return Redis::info();
@@ -20,8 +22,10 @@ class LaravelRedisService
      * Get keys of the server redis
      *
      * @params string $pattern
-     **/
-    public function keys($pattern='*')
+     * @param string $pattern
+     * @return mixed
+     */
+    public function keys(string $pattern='*')
     {
         return Redis::keys($pattern);
     }
@@ -30,8 +34,10 @@ class LaravelRedisService
      * Read the Redis slow queries log
      *
      * @params int $n
-     **/
-    public function slowLogs($n = -1)
+     * @param int $n
+     * @return mixed
+     */
+    public function slowLogs(int $n = -1)
     {
         if ($n > 0) {
             return Redis::slowlog('GET', $n);

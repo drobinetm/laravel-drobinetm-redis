@@ -1,6 +1,6 @@
 <?php
 
-use Drobinetm\Redis\Http\Controllers\LaravelRedisController;
+use Drobinetm\LaravelRedis\Http\Controllers\LaravelRedisController;
 use Illuminate\Support\Facades\Route;
 
 

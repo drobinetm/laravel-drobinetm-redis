@@ -1,12 +1,10 @@
 <?php
 
-namespace Drobinetm\Redis\Http\Services;
+namespace Drobinetm\LaravelRedis\Http\Services;
 
-use Drobinetm\Redis\Models\LaravelRedisSecurity;
-use Illuminate\Support\Facades\Redis;
+use Drobinetm\LaravelRedis\Models\LaravelRedisSecurity;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Contracts\Encryption\DecryptException;
 use Exception;
 
 class LaravelRedisSecurityService
@@ -18,7 +16,7 @@ class LaravelRedisSecurityService
      **/
     public function __construct()
     {
-        $this->laravelRedisSecurity = LaravelRedisSecurity::first();;
+        $this->laravelRedisSecurity = LaravelRedisSecurity::first();
     }
 
     private function security()

@@ -1,10 +1,9 @@
 <?php
 
-namespace Drobinetm\Redis\Http\Controllers;
+namespace Drobinetm\LaravelRedis\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Drobinetm\Redis\Http\Services\LaravelRedisService;
+use Drobinetm\LaravelRedis\Http\Services\LaravelRedisService;
 use Illuminate\Http\JsonResponse;
 
 class LaravelRedisController extends Controller
@@ -24,7 +23,9 @@ class LaravelRedisController extends Controller
 
     /**
      * Get info from server redis
-     **/
+     *
+     * @return JsonResponse
+     */
     public function info()
     {
         $info = $this->laravelRedisService->infoServer();
@@ -33,7 +34,9 @@ class LaravelRedisController extends Controller
 
     /**
      * Get keys from server redis
-     **/
+     *
+     * @return JsonResponse
+     */
     public function keys()
     {
         $keys = $this->laravelRedisService->keys();
@@ -42,7 +45,9 @@ class LaravelRedisController extends Controller
 
     /**
      * Get slow queries log
-     **/
+     *
+     * @return JsonResponse
+     */
     public function slowLog()
     {
         $logs = $this->laravelRedisService->slowLogs();
