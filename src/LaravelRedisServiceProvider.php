@@ -22,7 +22,7 @@ class LaravelRedisServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__ . '/../routes/route.php');
 
         // Migrations
-        $this->loadMigrationsFrom( __DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         // Commands
         if ($this->app->runningInConsole()) {

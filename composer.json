@@ -1,6 +1,6 @@
 {
     "version": "1.0.1",
-    "name": "drobinetm/laravel-redis",
+    "name": "drobinetm/laravel-drobinetm-redis",
     "description": "Package to obtain the info of a redis server used by our application through a json response.",
     "type": "library",
     "license": "MIT",
