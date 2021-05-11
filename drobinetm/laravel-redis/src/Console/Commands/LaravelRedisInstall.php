@@ -49,7 +49,7 @@ class LaravelRedisInstall extends Command
     public function handle()
     {
         // Run migration
-        Artisan::call('migrate', ['--path' => __DIR__ . '../../database/migrations/2021_05_08_133134_create_laravel_redis_securities_table.php']);
+        Artisan::call('migrate', ['--path' => 'vendor/drobinetm/laravel-redis/database/migrations/2021_05_08_133134_create_laravel_redis_securities_table.php']);
 
         // Generate security properties and save on database
         $properties = $this->laravelRedisSecurityService->release();

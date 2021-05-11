@@ -22,13 +22,20 @@ composer require drobinetm/laravel-drobinetm-redis
 php artisan laravel-redis:install
 ```
 
+## In Your Project 
+
+1. Modify `phpredis` by `predis` in database.php config.
+
+2. Modify in database.php the connection config to your redis server.
+
+`Note:` [Laravel Docs](https://laravel.com/docs/8.x/redis#predis)
+
 ## Then
 
 1. Save the printed signature property in the console.
 
 2. Send in the header of the links the value of the signature property: 
 [Laravel-Redis-Signature] => signature value
-
 
 ## Endpoints
 

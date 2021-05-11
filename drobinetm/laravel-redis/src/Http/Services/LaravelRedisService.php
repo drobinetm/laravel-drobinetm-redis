@@ -2,20 +2,29 @@
 
 namespace Drobinetm\LaravelRedis\Http\Services;
 
-use Illuminate\Support\Facades\Redis;
+use Predis\Client;
 
 class LaravelRedisService
 {
-    public function __construct() {}
+    protected $redis;
+
+    public function __construct() {
+        $this->redis = new Client();
+    }
 
     /**
      * Access to info of the server redis
      *
-     * @return mixed
+     * @param string $section
+     * @return array
      */
-    public function infoServer()
+    public function infoServer(string $section='')
     {
-        return Redis::info();
+        if (empty($section)) {
+            return $this->redis->info();
+        }
+
+        return $this->redis->info($section);
     }
 
     /**
@@ -27,7 +36,7 @@ class LaravelRedisService
      */
     public function keys(string $pattern='*')
     {
-        return Redis::keys($pattern);
+        return $this->redis->keys($pattern);
     }
 
     /**
@@ -40,9 +49,9 @@ class LaravelRedisService
     public function slowLogs(int $n = -1)
     {
         if ($n > 0) {
-            return Redis::slowlog('GET', $n);
+            return $this->redis->slowlog('GET', $n);
         }
 
-        return Redis::slowlog('GET');
+        return $this->redis->slowlog('GET');
     }
 }

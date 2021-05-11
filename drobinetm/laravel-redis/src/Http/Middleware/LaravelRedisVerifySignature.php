@@ -9,17 +9,19 @@ use Illuminate\Http\Request;
 
 class LaravelRedisVerifySignature
 {
+    /**
+     * The Laravel Redis Security Service object.
+     *
+     * @var LaravelRedisSecurityService
+     */
     protected $laravelRedisSecurityService;
 
     /**
      * LaravelRedisController constructor
-     *
-     * @params LaravelRedisSecurityService $laravelRedisSecurityService
-     *
      **/
-    public function __construct(LaravelRedisSecurityService $laravelRedisSecurityService)
+    public function __construct()
     {
-        $this->laravelRedisSecurityService = $laravelRedisSecurityService;
+        $this->laravelRedisSecurityService = new LaravelRedisSecurityService();
     }
 
     /**

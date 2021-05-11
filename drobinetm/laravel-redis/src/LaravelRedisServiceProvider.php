@@ -19,10 +19,10 @@ class LaravelRedisServiceProvider extends ServiceProvider
     public function boot()
     {
         // Route
-        $this->loadRoutesFrom(__DIR__ . '/routes/route.php');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/route.php');
 
         // Migrations
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+        $this->loadMigrationsFrom( __DIR__ . '/../database/migrations');
 
         // Commands
         if ($this->app->runningInConsole()) {
