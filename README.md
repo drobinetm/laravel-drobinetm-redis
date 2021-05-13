@@ -37,6 +37,11 @@ php artisan laravel-redis:install
 2. Send in the header of the links the value of the signature property: 
 [Laravel-Redis-Signature] => signature value
 
+<h2>
+  <img src="https://github.com/drobinetm/laravel-drobinetm-redis/blob/main/src/public/assets/2021-05-13_10-55.png?raw=true" alt="laravel-redis-signature.png">
+  <br>
+</h2>
+
 ## Endpoints
 
 1. **[GET]** `/redis/info` | **(Params - Optional)** `section: server|clients|memory|persistence|stats|replication|cpu|cluster|keyspace`
