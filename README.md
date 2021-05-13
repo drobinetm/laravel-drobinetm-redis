@@ -43,4 +43,4 @@ php artisan laravel-redis:install
 
 2. **[GET]** `/redis/keys` | **(Params - Optional)** `pattern: *|<any-pattern>`
 
-3. **[GET]** `/redis/slow-log` | **(Params - Optional)** `argument: 1|<any-subcomand>`
+3. **[GET]** `/redis/slow-log` | **(Params - Optional)** `argument: 1|<any-argument>`
