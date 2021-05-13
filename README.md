@@ -39,8 +39,8 @@ php artisan laravel-redis:install
 
 ## Endpoints
 
-1. **[GET]** `/redis/info`
+1. **[GET]** `/redis/info` | **(Params - Optional)** `section: server|clients|memory|persistence|stats|replication|cpu|cluster|keyspace`
 
-2. **[GET]** `/redis/keys`
+2. **[GET]** `/redis/keys` | **(Params - Optional)** `pattern: *|<any-pattern>`
 
-3. **[GET]** `/redis/slow-log`
+3. **[GET]** `/redis/slow-log` | **(Params - Optional)** `argument: 1|<any-subcomand>`

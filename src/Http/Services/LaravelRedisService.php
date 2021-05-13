@@ -32,7 +32,7 @@ class LaravelRedisService
      *
      * @params string $pattern
      * @param string $pattern
-     * @return mixed
+     * @return array
      */
     public function keys(string $pattern='*')
     {
